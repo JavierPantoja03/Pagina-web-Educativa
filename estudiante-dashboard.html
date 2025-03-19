@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal del Estudiante</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background-color: #ff9800; /* Naranja */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 0 20px;
+            text-align: center; /* Centra el banner */
+        }
+        .banner {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .banner h2 {
+            color: #333;
+        }
+        .banner p {
+            color: #666;
+        }
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .button-container { /* Nuevo contenedor para los botones */
+            display: flex;
+            justify-content: center; /* Centra los botones horizontalmente */
+            gap: 20px; /* Espacio entre los botones */
+            margin-top: 15px; /* Espacio entre el texto y los botones */
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff9800;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #e68a00;
+        }
+        .btn-back {
+            background-color: #6c757d; /* Gris */
+        }
+        .btn-back:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 id="welcomeMessage">Bienvenido, Estudiante</h1>
+    </div>
+
+    <div class="container">
+        <div class="banner">
+            <h2>Materias</h2>
+            <img src="/api/placeholder/400/200" alt="Imagen de Materias"> <!-- Reemplaza con tu imagen -->
+            <p>Aquí encontrarás todo lo relacionado con la materia que estás buscando.</p>
+            <div class="button-container">  <!-- Contenedor para los botones -->
+                <a href="estudiante.html" class="btn btn-back">Atrás</a>
+                <a href="materias.html" class="btn">Ver Materias</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const nombreEstudiante = localStorage.getItem('nombreEstudiante');
+            const gradoEstudiante = localStorage.getItem('gradoEstudiante');
+
+            if (nombreEstudiante && gradoEstudiante) {
+                // Extrae el número del grado y mantiene "Primaria"
+                const partesGrado = gradoEstudiante.split(' ');
+                const numeroGrado = partesGrado[partesGrado.length - 1]; // Obtiene el último valor que es el número
+                document.getElementById('welcomeMessage').innerText = `Bienvenido/a, ${nombreEstudiante} de Primaria ${numeroGrado}`;
+
+                // Guarda el número del grado solo para usarlo en materias.html
+                localStorage.setItem('numeroGrado', numeroGrado);
+            } else {
+                document.getElementById('welcomeMessage').innerText = "Bienvenido, Estudiante"; // Mensaje por defecto si no hay datos
+            }
+        });
+    </script>
+</body>
+</html>

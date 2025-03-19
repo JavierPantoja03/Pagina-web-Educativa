@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Docente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+        .banner {
+            background-color: #2196F3;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .btn {
+            padding: 12px 24px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        .btn:hover {
+            background-color: #0b7dda;
+        }
+        .btn-volver {
+            background-color: #6c757d;
+            margin-top: 10px;
+        }
+        .btn-volver:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <h1>Registro de Docente</h1>
+        </div>
+        <form id="docenteForm">
+            <div class="form-group">
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="idDocente">ID Docente:</label>
+                <input type="text" id="idDocente" name="idDocente" required>
+            </div>
+            <button type="submit" class="btn">Registrar</button>
+            <button type="button" class="btn btn-volver" onclick="window.location.href='seleccion.html'">Volver</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('docenteForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const nombreCompleto = document.getElementById('nombre').value;
+            const idDocente = document.getElementById('idDocente').value;
+            
+            // Extraer el primer nombre
+            const primerNombre = nombreCompleto.split(' ')[0];
+            
+            // Guardar en localStorage para usarlo en la siguiente página
+            localStorage.setItem('nombreDocente', primerNombre);
+            localStorage.setItem('nombreCompletoDocente', nombreCompleto);
+            localStorage.setItem('idDocente', idDocente);
+            
+            // Redirigir a la página de dashboard del docente
+            window.location.href = 'docente-dashboard.html';
+        });
+    </script>
+</body>
+</html>

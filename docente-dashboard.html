@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal del Docente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background-color: #2196F3;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .cards-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: calc(50% - 10px);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-img {
+            height: 200px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .card h2 {
+            color: #333;
+            margin-top: 0;
+        }
+        .card p {
+            color: #666;
+            line-height: 1.5;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0b7dda;
+        }
+        .btn-back {
+            background-color: #6c757d;
+            margin-top: 30px;
+        }
+        .btn-back:hover {
+            background-color: #5a6268;
+        }
+        .back-container {
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 id="welcomeMessage">Bienvenido, Docente</h1>
+    </div>
+
+    <div class="container">
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/200" alt="Actividades de aprendizaje" />
+                </div>
+                <div class="card-content">
+                    <h2>Actividades de aprendizaje</h2>
+                    <p>Accede a todas las actividades de aprendizaje organizadas por grado. Aquí encontrarás recursos educativos, guías de trabajo, y material didáctico para tus clases.</p>
+                    <a href="actividades.html" class="btn">Ver Actividades</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/200" alt="Formas de Evaluación" />
+                </div>
+                <div class="card-content">
+                    <h2>Formas de Evaluación</h2>
+                    <p>Consulta las diferentes estrategias de evaluación para cada grado. Incluye rúbricas, exámenes modelo, criterios de evaluación y herramientas de seguimiento del progreso estudiantil.</p>
+                    <a href="evaluacion.html" class="btn">Ver Evaluación</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-container">
+            <a href="docente.html" class="btn btn-back">Atrás</a>
+        </div>
+    </div>
+
+    <script>
+        // Recuperar el nombre del docente del localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const nombreDocente = localStorage.getItem('nombreDocente');
+            if (nombreDocente) {
+                document.getElementById('welcomeMessage').innerText = `Bienvenido, Docente ${nombreDocente}`;
+            }
+        });
+    </script>
+</body>
+</html>

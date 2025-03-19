@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materias</title>
+    <style>
+        /* Estilos Globales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden; /* Oculta el scroll horizontal */
+        }
+
+        /* Estilos para el encabezado (título) */
+        .header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 0 0 8px 8px;
+            width: 100%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para el contenedor principal */
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            text-align: left;
+            box-sizing: border-box; /* Importante: incluye el padding y el border en el ancho */
+        }
+
+        /* Estilos para los títulos de cada materia */
+        .subject h2 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Estilos para la lista de temas */
+        ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        /* Estilos para cada tema */
+        li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        /* Estilos para el contenedor del botón "Atrás" */
+        .back-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        /* Estilos para el botón "Atrás" */
+        .btn {
+            padding: 12px 25px;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #5a6268;
+        }
+
+        /* Estilos generales del texto */
+        body, p, li {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado (título) -->
+    <div class="header">
+        <h1 id="pageTitle">Primaria</h1>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="container" id="contentContainer">
+        <!-- El contenido específico del grado se insertará aquí -->
+    </div>
+
+    <!-- Botón "Atrás" -->
+    <div class="back-container">
+        <a href="estudiante-dashboard.html" class="btn">Atrás</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const numeroGrado = localStorage.getItem('numeroGrado');
+            const contentContainer = document.getElementById('contentContainer');
+
+            if (numeroGrado) {
+                document.getElementById('pageTitle').innerText = `Primaria ${numeroGrado}`;
+
+                // Definir el contenido de cada grado
+                let gradoContent = '';
+                switch (numeroGrado) {
+                    case '1':
+                        gradoContent = `
+                            <div class="subject">
+                                <h2>Matemáticas</h2>
+                                <ul>
+                                    <li>Números del 0 al 20</li>
+                                    <li>Operaciones básicas (suma y resta simples)</li>
+                                    <li>Reconocimiento de formas geométricas básicas</li>
+                                    <li>Medición de longitud y peso con unidades no convencionales</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Lengua Castellana</h2>
+                                <ul>
+                                    <li>Reconocimiento del alfabeto</li>
+                                    <li>Lectura y escritura de palabras y frases sencillas</li>
+                                    <li>Desarrollo de la comprensión oral</li>
+                                    <li>Iniciación a la gramática básica</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Ciencias Naturales</h2>
+                                <ul>
+                                    <li>Reconocimiento de seres vivos y no vivos</li>
+                                    <li>Partes del cuerpo humano</li>
+                                    <li>Cuidado del medio ambiente</li>
+                                    <li>Los animales y sus entornos</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Ciencias Sociales</h2>
+                                <ul>
+                                    <li>La familia y la escuela</li>
+                                    <li>Normas de convivencia</li>
+                                    <li>Reconocimiento de lugares cercanos</li>
+                                    <li>Fechas especiales</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Educación Artística</h2>
+                                <ul>
+                                    <li>Dibujo y pintura libre</li>
+                                    <li>Manualidades con materiales simples</li>
+                                    <li>Canciones y juegos musicales</li>
+                                    <li>Expresión corporal básica</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Educación Física</h2>
+                                <ul>
+                                    <li>Desarrollo de habilidades motrices básicas (correr, saltar, lanzar)</li>
+                                    <li>Juegos y rondas</li>
+                                    <li>Coordinación y equilibrio</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Educación Ética y Valores</h2>
+                                <ul>
+                                    <li>Identificación de emociones básicas</li>
+                                    <li>Respeto por los demás</li>
+                                    <li>Hábitos de cortesía</li>
+                                </ul>
+                            </div>
+                        `;
+                        break;
+                    case '2':
+                        gradoContent = `
+                            <div class="subject">
+                                <h2>Matemáticas</h2>
+                                <ul>
+                                    <li>Números hasta el 100</li>
+                                    <li>Suma y resta con números de dos cifras</li>
+                                    <li>Introducción a la multiplicación</li>
+                                    <li>Medición de longitud y peso con unidades convencionales</li>
+                                    <li>Figuras geométricas</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Lengua Castellana</h2>
+                                <ul>
+                                    <li>Lectura y escritura de textos cortos</li>
+                                    <li>Ampliación del vocabulario</li>
+                                    <li>Gramática básica (sustantivos, adjetivos, verbos)</li>
+                                    <li>Comprensión de textos sencillos</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Ciencias Naturales</h2>
+                                <ul>
+                                    <li>Ciclos de vida de los seres vivos</li>
+                                    <li>Clasificación de animales y plantas</li>
+                                    <li>Los estados de la materia</li>
+                                    <li>El sistema solar</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Ciencias Sociales</h2>
+                                <ul>
+                                    <li>La comunidad y sus servicios</li>
+                                    <li>Historia de la localidad</li>
+                                    <li>Símbolos patrios</li>
+                                    <li>Mapas sencillos</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Educación Artística</h2>
+                                <ul>
+                                    <li>Técnicas de dibujo y pintura</li>
+                                    <li>Elaboración de manualidades más complejas</li>
+                                    <li>Interpretación de canciones</li>
+                                    <li>Danzas y expresión teatral simple</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Educación Física</h2>
+                                <ul>
+                                    <li>Desarrollo de habilidades motrices finas y gruesas</li>
+                                    <li>Juegos deportivos básicos</li>
+                                    <li>Trabajo en equipo</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Educación Ética y Valores</h2>
+                                <ul>
+                                    <li>Resolución de conflictos</li>
+                                    <li>Importancia de la honestidad</li>
+                                    <li>Valoración de la diversidad</li>
+                                </ul>
+                            </div>
+                        `;
+                        break;
+                       case '3':
+                        gradoContent = `
+                            <div class="subject">
+                                <h2>Matemáticas</h2>
+                                <ul>
+                                    <li>Números hasta el 1.000</li>
+                                    <li>Multiplicación y división básicas</li>
+                                    <li>Fracciones simples</li>
+                                    <li>Medición de tiempo y capacidad</li>
+                                    <li>Geometría plana</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Lengua Castellana</h2>
+                                <ul>
+                                    <li>Lectura de textos más extensos</li>
+                                    <li>Escritura de textos narrativos y descriptivos</li>
+                                    <li>Gramática (tiempos verbales, oraciones)</li>
+                                    <li>Ortografía básica</li>
+                                </ul>
+                            </div>
+                             <div class="subject">
+                                <h2>Ciencias Naturales</h2>
+                                <ul>
+                                    <li>Ecosistemas y cadenas alimenticias</li>
+                                    <li>El cuerpo humano y sus sistemas</li>
+                                    <li>Fuerzas y movimiento</li>
+                                    <li>Recursos naturales</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Ciencias Sociales</h2>
+                                <ul>
+                                    <li>Organización del territorio colombiano</li>
+                                    <li>Historia de Colombia (periodo indígena y conquista)</li>
+                                    <li>Formas de gobierno</li>
+                                    <li>Derechos y deberes</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Educación Artística</h2>
+                                <ul>
+                                    <li>Técnicas de dibujo y pintura avanzadas</li>
+                                    <li>Creación de obras artísticas</li>
+                                    <li>Interpretación musical con instrumentos</li>
+                                    <li>Teatro y expresión dramática</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Educación Física</h2>
+                                <ul>
+                                    <li>Deportes individuales y colectivos</li>
+                                    <li>Condición física y salud</li>
+                                    <li>Juegos pre deportivos</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Educación Ética y Valores</h2>
+                                <ul>
+                                    <li>Responsabilidad y autonomía</li>
+                                    <li>Toma de decisiones éticas</li>
+                                    <li>Participación ciudadana</li>
+                                </ul>
+                            </div>
+                        `;
+                        break;
+                         case '4':
+                        gradoContent = `
+                             <div class="subject">
+                                <h2>Matemáticas</h2>
+                                <ul>
+                                    <li>Números naturales hasta millones</li>
+                                    <li>Operaciones con números naturales (suma, resta, multiplicación, división)</li>
+                                    <li>Fracciones: conceptos básicos y operaciones simples</li>
+                                    <li>Números decimales: introducción y operaciones básicas</li>
+                                     <li>Medición: unidades de longitud, masa, tiempo y capacidad</li>
+                                      <li>Geometría: figuras planas y sus propiedades</li>
+                                       <li>Estadística: recolección y representación de datos</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Lengua Castellana</h2>
+                                <ul>
+                                    <li>Comprensión de textos narrativos, descriptivos y expositivos</li>
+                                    <li>Producción de textos escritos con coherencia y cohesión</li>
+                                    <li>Gramática: clases de palabras, oraciones simples y compuestas</li>
+                                    <li>Ortografía: reglas básicas y uso de signos de puntuación</li>
+                                      <li>Literatura: introducción a diferentes géneros literarios</li>
+                                </ul>
+                            </div>
+                             <div class="subject">
+                                <h2>Ciencias Naturales</h2>
+                                <ul>
+                                    <li>Seres vivos: clasificación, características y funciones vitales</li>
+                                    <li>Ecosistemas: componentes, interacciones y cadenas alimentarias</li>
+                                    <li>Materia y energía: estados de la materia, transformaciones y fuentes de energía</li>
+                                    <li>El cuerpo humano: sistemas digestivo, respiratorio y circulatorio</li>
+                                      <li>Tecnología: uso responsable de la tecnología y su impacto en el medio ambiente</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Ciencias Sociales</h2>
+                                <ul>
+                                    <li>Geografía de Colombia: regiones naturales, relieve, clima y recursos</li>
+                                    <li>Historia de Colombia: periodo de la independencia y formación de la república</li>
+                                    <li>Organización política de Colombia: ramas del poder público y división territorial</li>
+                                    <li>Constitución Política: derechos y deberes ciudadanos</li>
+                                     <li>Cultura y diversidad: reconocimiento de la diversidad cultural en Colombia</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Educación Artística</h2>
+                                <ul>
+                                    <li>Expresión plástica: técnicas de dibujo, pintura, escultura y grabado</li>
+                                    <li>Expresión musical: interpretación de canciones, instrumentos musicales y ritmos</li>
+                                    <li>Expresión dramática: juegos teatrales, improvisación y representación de obras cortas</li>
+                                    <li>Apreciación artística: análisis de obras de arte y reconocimiento de diferentes estilos</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Educación Física</h2>
+                                <ul>
+                                    <li>Desarrollo de habilidades motrices específicas: coordinación, equilibrio, fuerza y flexibilidad</li>
+                                    <li>Práctica de deportes individuales y colectivos: atletismo, baloncesto, voleibol, etc.</li>
+                                    <li>Condición física y salud: hábitos de vida saludable y prevención de lesiones</li>
+                                    <li>Juegos y actividades recreativas: juegos tradicionales, rondas y actividades al aire libre</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Educación Ética y Valores</h2>
+                                <ul>
+                                    <li>Desarrollo de la autoestima y la autonomía</li>
+                                    <li>Resolución de conflictos de manera pacífica</li>
+                                    <li>Valoración de la diversidad y el respeto por los demás</li>
+                                    <li>Participación ciudadana y compromiso con la comunidad</li>
+                                </ul>
+                            </div>
+                        `;
+                        break;
+                         case '5':
+                        gradoContent = `
+                             <div class="subject">
+                                <h2>Matemáticas</h2>
+                                <ul>
+                                    <li>Operaciones con fracciones y decimales</li>
+                                    <li>Porcentajes y proporciones</li>
+                                    <li>Geometría: áreas y perímetros de figuras planas, cuerpos geométricos</li>
+                                    <li>Estadística: interpretación de gráficos y tablas, probabilidad básica</li>
+                                    <li>Resolución de problemas matemáticos con diferentes estrategias</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Lengua Castellana</h2>
+                                <ul>
+                                    <li>Análisis de textos literarios y no literarios: estructura, personajes, ideas principales</li>
+                                    <li>Producción de textos argumentativos y expositivos</li>
+                                    <li>Gramática: análisis sintáctico de oraciones compuestas</li>
+                                    <li>Ortografía: reglas avanzadas y uso correcto de la puntuación</li>
+                                    <li>Literatura: estudio de autores y obras representativas de la literatura colombiana y universal</li>
+                                </ul>
+                            </div>
+                             <div class="subject">
+                                <h2>Ciencias Naturales</h2>
+                                <ul>
+                                    <li>Sistemas del cuerpo humano: sistema nervioso, endocrino y reproductor</li>
+                                    <li>Ecosistemas: ciclos biogeoquímicos, impacto ambiental y conservación</li>
+                                    <li>Física y químicas básicas: propiedades de la materia, fuerzas, movimiento y energía</li>
+                                    <li>Tecnología: desarrollo tecnológico y su impacto en la sociedad</li>
+                                    <li>Investigación científica: formulación de preguntas, diseño de experimentos y análisis de resultados</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Ciencias Sociales</h2>
+                                <ul>
+                                    <li>Geografía de América y el mundo: continentes, océanos, países y culturas</li>
+                                    <li>Historia de Colombia: siglo XX y conflictos contemporáneos</li>
+                                    <li>Economía y sociedad: sectores económicos, problemas sociales y desarrollo sostenible</li>
+                                    <li>Constitución Política: mecanismos de participación ciudadana y derechos fundamentales</li>
+                                    <li>Geopolítica: relaciones internacionales y organizaciones mundiales</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Educación Artística</h2>
+                                <ul>
+                                    <li>Historia del arte: movimientos artísticos y artistas representativos</li>
+                                    <li>Técnicas artísticas avanzadas: óleo, acuarela, grabado, etc.</li>
+                                    <li>Creación de proyectos artísticos individuales y colectivos</li>
+                                    <li>Apreciación crítica del arte: análisis de obras de arte desde diferentes perspectivas</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Educación Física</h2>
+                                <ul>
+                                    <li>Deportes de equipo: fútbol, baloncesto, voleibol, etc.</li>
+                                    <li>Actividades físicas al aire libre: senderismo, ciclismo, etc.</li>
+                                    <li>Planificación de actividades físicas personalizadas</li>
+                                    <li>Nutrición y salud: alimentación equilibrada y prevención de enfermedades</li>
+                                </ul>
+                            </div>
+                            <div class="subject">
+                                <h2>Educación Ética y Valores</h2>
+                                <ul>
+                                    <li>Derechos humanos y responsabilidad social</li>
+                                    <li>Justicia, equidad y solidaridad</li>
+                                    <li>Participación ciudadana activa y liderazgo</li>
+                                    <li>Proyecto de vida y valores personales</li>
+                                </ul>
+                            </div>
+                        `;
+                        break;
+                    default:
+                        gradoContent = '<p>Contenido no disponible para este grado.</p>';
+                        break;
+                }
+
+                contentContainer.innerHTML = gradoContent;
+
+            } else {
+                document.getElementById('pageTitle').innerText = "Primaria"; // Título por defecto
+                contentContainer.innerHTML = '<p>Por favor, selecciona un grado.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
+
