@@ -50,6 +50,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden; /* Asegura que la imagen no se salga del contenedor */
+        }
+        .card-img img {
+            width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+            height: 100%; /* La imagen ocupa todo el alto del contenedor */
+            object-fit: cover; /* Ajusta la imagen para cubrir el área sin deformarse */
         }
         .card-content {
             padding: 20px;
@@ -102,7 +108,7 @@
         <div class="cards-container">
             <div class="card">
                 <div class="card-img">
-                    <img src="/api/placeholder/400/200" alt="Actividades de aprendizaje" />
+                    <img src="docente/actdeaprendizaje.jpg" alt="Actividades de aprendizaje" />
                 </div>
                 <div class="card-content">
                     <h2>Actividades de aprendizaje</h2>
@@ -113,7 +119,7 @@
 
             <div class="card">
                 <div class="card-img">
-                    <img src="/api/placeholder/400/200" alt="Formas de Evaluación" />
+                    <img src="docente/evaluacion.jpg" alt="Formas de Evaluación" />
                 </div>
                 <div class="card-content">
                     <h2>Formas de Evaluación</h2>
@@ -122,14 +128,13 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="back-container">
             <a href="docente.html" class="btn btn-back">Atrás</a>
         </div>
     </div>
 
     <script>
-        // Recuperar el nombre del docente del localStorage
         document.addEventListener('DOMContentLoaded', function() {
             const nombreDocente = localStorage.getItem('nombreDocente');
             if (nombreDocente) {
