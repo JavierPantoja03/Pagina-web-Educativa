@@ -9,57 +9,63 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
+            height: 100vh;
+            background: url('bienvenida/imageninicio.jpg') no-repeat center center/cover;
         }
         .header {
             background-color: #ff9800; /* Naranja */
             color: white;
-            padding: 20px;
+            padding: 15px; /* Reducido de 20px */
             text-align: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             position: relative;
         }
         h1 {
             margin: 0;
+            font-size: 1.5em; /* Añadido para reducir tamaño del título */
         }
         .container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 0 20px;
-            text-align: center; /* Centra el banner */
+            max-width: 600px; /* Reducido de 800px */
+            margin: 20px auto; /* Reducido de 30px */
+            padding: 0 15px; /* Reducido de 20px */
+            text-align: center;
         }
         .banner {
             background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 8px; /* Reducido de 10px */
+            box-shadow: 0 0 8px rgba(0,0,0,0.1); /* Reducido de 10px */
+            padding: 15px; /* Reducido de 20px */
+            margin-bottom: 15px; /* Reducido de 20px */
         }
         .banner h2 {
             color: #333;
+            font-size: 1.3em; /* Añadido para reducir tamaño */
         }
         .banner p {
             color: #666;
+            font-size: 0.9em; /* Añadido para reducir tamaño */
         }
         .banner img {
-            max-width: 100%;
+            max-width: 80%; /* Reducido de 100% */
             height: auto;
-            margin-bottom: 10px;
+            margin: 0 auto 8px; /* Centrado y reducido el margen */
+            display: block; /* Para asegurar que la imagen se centre */
         }
-        .button-container { /* Nuevo contenedor para los botones */
+        .button-container {
             display: flex;
-            justify-content: center; /* Centra los botones horizontalmente */
-            gap: 20px; /* Espacio entre los botones */
-            margin-top: 15px; /* Espacio entre el texto y los botones */
+            justify-content: center;
+            gap: 15px; /* Reducido de 20px */
+            margin-top: 10px; /* Reducido de 15px */
         }
         .btn {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 8px 15px; /* Reducido de 10px 20px */
             background-color: #ff9800;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 4px; /* Reducido de 5px */
             font-weight: bold;
+            font-size: 0.9em; /* Añadido para reducir tamaño */
             transition: background-color 0.3s;
             cursor: pointer;
         }
@@ -82,9 +88,9 @@
     <div class="container">
         <div class="banner">
             <h2>Materias</h2>
-            <img src="estudiante/51fff0d65a09ff39ce4f73d9d90e5958.jpg" alt="Imagen de Materias"> <!-- Reemplaza con tu imagen -->
+            <img src="estudiante/51fff0d65a09ff39ce4f73d9d90e5958.jpg" alt="Imagen de Materias">
             <p>Aquí encontrarás todo lo relacionado con la materia que estás buscando.</p>
-            <div class="button-container">  <!-- Contenedor para los botones -->
+            <div class="button-container">
                 <a href="estudiante.html" class="btn btn-back">Atrás</a>
                 <a href="materias.html" class="btn">Ver Materias</a>
             </div>
